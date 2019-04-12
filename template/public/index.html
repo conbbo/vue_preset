@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+    <script type="text/javascript">
+      $CONFIG = {
+        timeDiff: new Date().getTime() - '<{$time}>',
+        static: "<{factory::load_config('domain','static_domain')}>"
+      }
+      window.use_screen_base = 750;
+      (function (doc, win) {
+        var resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+          base_size = use_screen_base,
+          docE = doc.documentElement,
+          recalc = function () {
+            var triggerRepaints = docE.clientWidth;
+            var clientWidth = win.innerWidth;
+            var fontSize = 100 * clientWidth / base_size;
+            docE.style.fontSize = fontSize + 'px';
+          };
+        recalc();
+        win.addEventListener(resizeEvt, recalc, false);
+        delete use_screen_base;
+      })(document, window);
+      if(['m.yizhibo.com','www.yizhibo.com','activity.yizhibo.com','yizhibo.com'].indexOf(location.host) === -1){
+        var script = document.createElement('script')
+        script.src = 'https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js'
+        document.getElementsByTagName('head')[0].appendChild(script)
+        script.onload = function(){
+          var vConsole = new VConsole();
+          console.log(window.location.href);
+        };
+      }
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but truelove doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

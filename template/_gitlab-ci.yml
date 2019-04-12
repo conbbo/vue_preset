@@ -1,0 +1,25 @@
+stages:
+  - test
+  - release
+  
+test:
+    stage: test
+    only:
+      - test
+    script:
+      - echo 'start'
+      - rm -fr gitpush.js
+      - cp /data/buildci/testPushV2.js ./gitpush.js
+      - node gitpush.js app/<%= options.directoryname %>
+      - rm -fr gitpush.js
+  
+release:
+    stage: release
+    only:
+      - release
+    script:
+      - echo 'release start'
+      - rm -fr masterpush.js
+      - cp /data/buildci/releasePushV2.js ./masterpush.js
+      - node masterpush.js app/<%= options.directoryname %>
+      - rm -fr masterpush.js
